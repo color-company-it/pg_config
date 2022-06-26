@@ -10,7 +10,7 @@ def load_yaml(filepath: str) -> dict:
     :return: Python object.
     """
     with open(filepath, "r") as _file:
-        return yaml.safe_load(filepath)
+        return yaml.safe_load(_file)
 
 
 def load_json(filepath: str) -> dict:
@@ -20,4 +20,4 @@ def load_json(filepath: str) -> dict:
     :return: Python object.
     """
     with open(filepath, "r") as _file:
-        return json.loads(filepath)
+        return json.loads(_file)

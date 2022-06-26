@@ -1,4 +1,5 @@
 from pg_config import PgConfig
+from pg_config.readers import load_yaml
 
 
 def main():
@@ -8,19 +9,21 @@ def main():
         password="magical_password",
         host="localhost",
         port="5433",
-        config={},
     )
 
+    test = pg.check_schema_changes(
+        table_name="table_1",
+        table_schema={
+            "id": "integer primary key not null",
+            "name": "varchar(20)",
+            "created_at": "timestamp without time zone default current_date",
+            "age": "integer",
+            "costs": "real",
+            "valid": "boolean",
+        },
+    )
 
-    data_types = set()
-    tables = pg._get_tables()
-    print(tables)
-
-    for table in tables:
-        columns = pg._get_columns(table_name=table)
-        data_types.update(columns.values())
-
-    print(data_types)
+    print(test)
 
 
 if __name__ == "__main__":

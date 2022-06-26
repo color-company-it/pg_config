@@ -1,0 +1,13 @@
+table_1:
+  schema:
+    id: integer primary key not null
+    name: varchar(20)
+    created_at: timestamp without time zone default current_date
+    age: integer
+    cost: real
+    valid: boolean
+  insert:
+    columns: [id, name, created_at, age, cost, valid]
+    data:
+      - [1, Alex, CURRENT_DATE, 24, 2.55, true]
+      - [2, Lee, "2022-06-05 12:23:00", 25, 3.00, false]

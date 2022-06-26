@@ -1,3 +1,5 @@
+import collections
+
 from pg_config.readers import load_yaml, load_json
 
 
@@ -21,3 +23,13 @@ def _handle_configuration(configuration: [str, dict]) -> dict:
                 f"Provided configuration filepath {file_type}"
                 f"is unsupported, use json or yaml."
             )
+
+
+def _sort_dict(data: dict) -> dict:
+    """
+    Sorts a dicts data lexicographically evaluated
+    on the keys.
+    :param data: Dict to be sorted lexicographically.
+    :return: Sorted dict.
+    """
+    return dict(collections.OrderedDict(sorted(data.items())))
